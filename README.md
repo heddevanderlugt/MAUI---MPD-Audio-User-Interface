@@ -5,10 +5,22 @@ Picture below shows my audio setup, top device is a modified tuner which interna
 
 ![cambridge audio setup](pics/frontview.jpeg)
 
-It is developed for my own usage. Tested only on my setup.
-Setup:
-	Raspberry PI 3B (all versions should work)
-	Cambridge Tuner, guts removed, buttons and LCD connected to Raspberry
+It is developed for my own usage. Tested only on my own setup.
+Build your own audio setup
+1. Buy a second hand audio component that fits your setup
+1. Remove the internals, but keep
+	* Display
+	* Buttons
+	* External connectors
+	* Power supply
+1. Add Raspberry
+1. Add audi DAC (optional, but recommended)
+1. Attach buttons to Raspberry PI
+1. Attach display to Raspberry PI
+
+* All python code
+* Easy configurable using ini file
+
 
 External libraries:
 	gpiozero
