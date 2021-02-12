@@ -19,9 +19,7 @@ It is developed for my own usage. Tested only on my own setup.
 1. Attach buttons to Raspberry PI
 1. Attach display to Raspberry PI
 
-* All python code
-* Easy configurable using ini file
-
+# Hardware design
 
 ## Wakeup GPIO3 (PIN5)
 GPIO3 is a special IO pin on the Raspberry PI. If the Raspberry PI is shut down by the shutdown command. Connecting this IO to ground wakes up the Raspberry PI. (When the Raspberry PI is power off, you must disconnect power supply and reconnect)
@@ -38,7 +36,20 @@ To enable this function the following line needs to be added to /boot/config.txt
 `enable_uart=1`
 The full description can be found on [howchoo](https://howchoo.com/g/ytzjyzy4m2e/build-a-simple-raspberry-pi-led-power-status-indicator).
 
+![cambridge audio setup](pics/open.jpeg)
+
+## Enclosure considerations
+The Cambridge Audio enclosure I used has limited space. This prohibited the stacking of the audio DAC board on the Raspberry PI. If you want to make it yourself easy, choose an enclosure that will fit the stacked boards or has enough space to install them vertical.<br>
+The LCD from the enclosure needed at least 6 volts for the backlight to function.<br>
+I reused the beautiful *toroidal transformer* from Cambridge. Most high end audio systems have stable and efficient transformers that can easily be reused.
+To reuse the buttons and led I removed the unwanted traces on the PCB with a small angle grinder.<br>
+As you can see on the picture, the internals still need a little sort out.
+
 # Software setup
+
+## Design
+* All python code
+* Easy configurable using ini file
 
 ## External libraries
 * gpiozero
