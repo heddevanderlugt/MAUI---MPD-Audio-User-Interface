@@ -44,6 +44,28 @@ The full description can be found on [howchoo](https://howchoo.com/g/ytzjyzy4m2e
 * gpiozero
 * mpd2
 
-## Systemd integration
-maui.service
+## Start as Service (systemd)
+In order to start maui automatically after a reboot, you can install maui as a systemd service. This are the steps to do that (on Raspbery PI OS and various other Linux flavours).
+*the following actions need **root´** privileges, use them as root or prefix them with `sudo `.*
+Create a file named `maui.service` in `/usr/lib/systemd/system`. The file has the following contents:<br>
+`[Unit]`<br>
+`Description=MPD Audio User Interface`<br>
+`[Service]`<br>
+`ExecStart=/usr/bin/python3 /home/pi/maui/maui.py`<br>
+`WorkingDirectory=/home/pi/maui`<br>
+`StandardOutput=inherit`<br>
+`StandardError=inherit`<br>
+`[Install]`<br>
+`WantedBy=default.target`<br>
+
+To install the service you have to enter the following command:<br>
+`systemctl enable maui`<br>
+After a reboot the service should be active.
+
+Some other command´s I found useful:
+* `systemctl daemon-reload` - reloads service files, to update the daemon without an reboot.
+* `systemctl status maui` or `systemctl status mpd` gives the current status of the service maui or mpd.
+* `journalctl -u maui` shows the log of the maui service
+* `systemctl start maui` or `systemctl stop maui` starts and stops the service, useful if you change the software on the fly
+
 
