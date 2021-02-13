@@ -52,7 +52,10 @@ As you can see on the picture, the internals still need a little sort out.
 * Easy configurable using ini file
 
 ## Prerequisites
-[Python3](https://www.python.org/downloads/)
+[Python3](https://www.python.org/downloads/)<br>
+Python3 must be installed.
+
+
 Non-standard Python packages
 * [Python-MPD2](https://pypi.org/project/python-mpd2/)<br>
 Module to connect to music player daemon.<br>
