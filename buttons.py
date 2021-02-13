@@ -25,7 +25,7 @@ import signal
 # add was_held to button object
 gpiozero.Button.was_held = False
 
-
+# buttons base class, please inherit from this class and implement the perform method
 class BUTTONS:
     def __init__( self, button_setup ):
         self.buttons_enabled = False
@@ -57,6 +57,8 @@ class BUTTONS:
                 self.buttons[GPIO] = function.lower()
         print( self.buttons )
 
+    # called when button is released but not held
+    # this is not a callback routine itself, it is called from button_released callback in case the button is not hold
     def button_pressed( self, button ):
         if self.verbose:
             print("button pressed: io", button.pin )
@@ -64,6 +66,8 @@ class BUTTONS:
             action = self.buttons[str(button.pin)]
             self.perform( action, str( button.pin) )
 
+    # called when a button is released
+    # this is the callback function for ALL gpiozero.button release callback´s
     def button_released( self, button ):
         if self.verbose:
             print("button released: io", button.pin )
@@ -76,6 +80,8 @@ class BUTTONS:
             action = self.buttons[strButton]
             self.perform( action, strButton )
 
+    # called when a button is hold
+    # this is the callback function for ALL gpiozero.button held callback´s
     def button_held( self, button ):
         button.was_held = True
         if self.verbose:

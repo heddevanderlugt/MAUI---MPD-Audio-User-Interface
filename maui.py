@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with MAUI. If not, see <http://www.gnu.org/licenses/>.
 
+# Some documentation can be found at: 
+# https://github.com/heddevanderlugt/MAUI---MPD-Audio-User-Interface
 
 import configparser
 import sys
@@ -39,7 +41,7 @@ from mpdi import MPDi
 
 cout_title = "MAUI - MPD Audio User Interface"
 cout_test = "started in test mode"
-cout_exit_ctrlbreak = "press ctrl-c to end"
+cout_exit_ctrlz = "press ctrl-z to end"
 
 cout_button_test = 'press any button, triggered GPIO and configured action is shown on console'
 cout_lcd_test = 'LCD test is performed, LCD should display testdata'
@@ -262,7 +264,7 @@ elif maui.mode=='lcd':
     print(cout_title)
     print(cout_test)
     print(cout_lcd_test)
-    print(cout_exit_ctrlbreak)
+    print(cout_exit_ctrlz)
 
     while True:
         maui.lcd.display( "performing tests", 0)
@@ -331,5 +333,5 @@ elif maui.mode=='buttons':
     print(cout_title)
     print(cout_test)
     print(cout_button_test)
-    print(cout_exit_ctrlbreak)
+    print(cout_exit_ctrlz)
     signal.pause()

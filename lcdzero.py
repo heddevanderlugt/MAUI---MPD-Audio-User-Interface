@@ -37,7 +37,7 @@ import os
 from gpiozero import Device, SharedMixin
 from gpiozero import OutputDevice
 
-
+# a LCD class using gpiozero baseclasses and IO functions
 class lcdzero(SharedMixin, Device):
     def __init__(self, width, heigth, enable_pin, rw_pin, rs_pin, d4_pin, d5_pin, d6_pin, d7_pin ):
         self.lock = None

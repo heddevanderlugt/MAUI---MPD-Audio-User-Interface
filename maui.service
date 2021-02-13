@@ -1,0 +1,11 @@
+[Unit]
+Description=MAUI - MPD Audio User Interface
+
+[Service]
+ExecStart=/usr/bin/python3 /usr/bin/maui/maui.py
+WorkingDirectory=/usr/bin/maui
+StandardOutput=inherit
+StandardError=inherit
+
+[Install]
+WantedBy=default.target
