@@ -51,19 +51,50 @@ As you can see on the picture, the internals still need a little sort out.
 * All python code
 * Easy configurable using ini file
 
-## External libraries
-* gpiozero
-* mpd2
+## Prerequisites
+[Python3](https://www.python.org/downloads/)
+Non-standard Python packages
+* [Python-MPD2](https://pypi.org/project/python-mpd2/)<br>
+Download and install using PIP:	`sudo pip install python-mpd2`
+* [gpiozero]( https://gpiozero.readthedocs.io/en/stable/)<br>
+Download and install using PIP:	`sudo pip install gpiozero`
+* [configparser](https://docs.python.org/3/library/configparser.html)<br>
+(not sure it is a non-standard package)<br>
+Download and install using PIP:	`sudo pip install configparser`
+
+## Copy MAUI files
+### create directory<br>
+`sudo mkdir /usr/local/maui`<br>
+`sudo cd /usr/local/maui`
+
+### place folowing files in this directory<br>
+`maui.py`<br>
+`maui.ini`<br>
+`mpdi.py`<br>
+`buttons.py`<br>
+`lcdzero.py`<br>
+
+
+## edit maui.ini
+Edit the maui.ini file so it resembles you settings/gpio setup.<br>
+
+
+Now it should be possible to test the setup by entering:
+`sydo python3 maui.py --test mpd`	test *music player deamon* connection<br>
+`sydo python3 maui.py --test lcd`	test *lcd*,shows some test information<br>
+`sydo python3 maui.py --test buttons`	test *buttons* connections, press a connected button, result will be shown on terminal<br>
+`sudo python3 maui.py`	run maui, see *Start as Service* on how to start maui after a reboot
+
 
 ## Start as Service (systemd)
 In order to start maui automatically after a reboot, you can install maui as a systemd service. This are the steps to do that (on Raspbery PI OS and various other Linux flavours).
 *the following actions need **root´** privileges, use them as root or prefix them with `sudo `.*
-Create a file named `maui.service` in `/usr/lib/systemd/system`. The file has the following contents:<br>
+Create a file named *`maui.service`* in `/usr/lib/systemd/system`. The file has the following contents:<br>
 `[Unit]`<br>
 `Description=MPD Audio User Interface`<br>
 `[Service]`<br>
-`ExecStart=/usr/bin/python3 /home/pi/maui/maui.py`<br>
-`WorkingDirectory=/home/pi/maui`<br>
+`ExecStart=/usr/bin/python3 /usr/bin/maui/maui.py`<br>
+`WorkingDirectory=/usr/bin/maui`<br>
 `StandardOutput=inherit`<br>
 `StandardError=inherit`<br>
 `[Install]`<br>
