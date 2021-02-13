@@ -1,5 +1,5 @@
 # MAUI - MPD Audio User Interface
-This module let you use any MPD based audio player using your own hardware buttons and/or LCD screen. Developed to reuse the buttons and lcd from my audioset to control a Raspberry PI audio setup. I choose Moode Audio but should work with any MPD based audio setup i.e XBMC/Kodi.
+This module let you use any MPD based audio player using your own hardware buttons and/or LCD screen. Developed to integrate a Raspberry Audio player in my audioset and reuse the LCD and buttons from a second hand tuner. I use Moode Audio but this should work with any MPD based audio setup i.e XBMC/Kodi.
 
 Picture below shows my audio setup, top device is a modified tuner which internals are replaced by a Raspberry PI 3B running Moode Audio.
 
@@ -55,11 +55,13 @@ As you can see on the picture, the internals still need a little sort out.
 [Python3](https://www.python.org/downloads/)
 Non-standard Python packages
 * [Python-MPD2](https://pypi.org/project/python-mpd2/)<br>
+Module to connect to music player daemon.<br>
 Download and install using PIP:	`sudo pip install python-mpd2`
 * [gpiozero]( https://gpiozero.readthedocs.io/en/stable/)<br>
+Easy usage of GPIO pins. Lcdzero makes use of gpiozero to handle the LCD screen.<br>
 Download and install using PIP:	`sudo pip install gpiozero`
 * [configparser](https://docs.python.org/3/library/configparser.html)<br>
-(not sure it is a non-standard package)<br>
+Read settings from the maui.ini file (not sure it is a non-standard package)<br>
 Download and install using PIP:	`sudo pip install configparser`
 
 ## Copy MAUI files
