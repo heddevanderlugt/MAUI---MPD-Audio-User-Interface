@@ -1,5 +1,10 @@
 # MAUI - MPD Audio User Interface
+## Purpose
 This module let you use any MPD based audio player using your own hardware buttons and/or LCD screen. Developed to integrate a Raspberry Audio player in my audioset and reuse the LCD and buttons from a second hand tuner. I use Moode Audio but this should work with any MPD based audio setup i.e XBMC/Kodi.
+
+* All python code
+* Easy configurable using ini file
+* No hard link to Moode audio or other audio players. Depends solely on MPD.
 
 Picture below shows my audio setup, top device is a modified tuner which internals are replaced by a Raspberry PI 3B running Moode Audio.
 
@@ -46,15 +51,17 @@ To reuse the buttons and led I removed the unwanted traces on the PCB with a sma
 As you can see on the picture, the internals still need a little sort out.
 
 # Software setup
-
-## Design
-* All python code
-* Easy configurable using ini file
-
 ## Prerequisites
+A working Raspberry Audio player.<br>
+
 [Python3](https://www.python.org/downloads/)<br>
 Python3 must be installed.
 
+[PIP](https://pip.pypa.io/en/stable/)<br>
+The Python Package Installer must be installed.<br>
+`sudo python3 -m pip install pip`<br>
+or upgrade<br>
+`sudo python3 -m pip install --upgrade pip`
 
 Non-standard Python packages
 * [Python-MPD2](https://pypi.org/project/python-mpd2/)<br>
@@ -80,7 +87,7 @@ Download and install using PIP:	`sudo pip install configparser`
 `lcdzero.py`<br>
 
 
-## edit maui.ini
+### edit maui.ini
 Edit the maui.ini file so it resembles you settings/gpio setup.<br>
 
 
@@ -93,7 +100,11 @@ Now it should be possible to test the setup by entering:
 
 ## Start as Service (systemd)
 In order to start maui automatically after a reboot, you can install maui as a systemd service. This are the steps to do that (on Raspbery PI OS and various other Linux flavours).
-*the following actions need **root´** privileges, use them as root or prefix them with `sudo `.*
+
+
+*The following actions need **root´** privileges, use them as root or prefix them with `sudo `.*
+
+
 Create a file named *`maui.service`* in `/usr/lib/systemd/system`. The file has the following contents:<br>
 `[Unit]`<br>
 `Description=MPD Audio User Interface`<br>
